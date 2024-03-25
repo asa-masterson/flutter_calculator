@@ -5,7 +5,7 @@
 [![Codemagic build status](https://api.codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/status_badge.svg)](https://codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/latest_build)
 
 ## Play Listing
-<img alt="Static Badge" src="https://img.shields.io/badge/Download%20on%20Google%20Play-darkgreen?logo=googleplay&link=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.pigsare.pink.calculator.calculator">
+[![Google Play Download](https://img.shields.io/badge/Google%20Play-darkgreen?logo=googleplay)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
 
 <img src="Hotpot%200.png"
      alt="Markdown Monster icon"
