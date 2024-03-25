@@ -9,23 +9,23 @@
 
 <img src="Hotpot%200.png"
      alt="Markdown Monster icon"
-     width=100vw
+     width=15%
      style="float: left; margin-right: 10px;" />
 <img src="Hotpot%201.png"
      alt="Markdown Monster icon"
-     width=100vw
+     width=15%
      style="float: left; margin-right: 10px;" />
 <img src="Hotpot%202.png"
      alt="Markdown Monster icon"
-     width=100vw
+     width=15%
      style="float: left; margin-right: 10px;" />
 <img src="Hotpot%203.png"
      alt="Markdown Monster icon"
-     width=100vw
+     width=15%
      style="float: left; margin-right: 10px;" />
 <img src="Hotpot%204.png"
      alt="Markdown Monster icon"
-     width=100vw
+     width=15%
      style="float: left; margin-right: 10px;" />
 
 
