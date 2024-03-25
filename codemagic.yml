@@ -1,22 +1,9 @@
 workflows:
   android-workflow:
     name: Android Workflow
-    # ....
     environment:
       android_signing:
         - Calculator
-    scripts:
-
-      # ...
-
-      - name: Set up key.properties
-        script: |
-          cat >> "$CM_BUILD_DIR/project_directory/android/key.properties" <<EOF
-          storePassword=$CM_KEYSTORE_PASSWORD
-          keyPassword=$CM_KEY_PASSWORD
-          keyAlias=$CM_KEY_ALIAS
-          storeFile=$CM_KEYSTORE_PATH
-          EOF    
     artifacts:
       - build/**/outputs/apk/**/*.apk
       - build/**/outputs/**/*.aab
