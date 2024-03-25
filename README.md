@@ -1,20 +1,10 @@
-# Simple Calculator
 
-<img align="right" height="150" src="https://asamasterson.com/github/flutter_calculator/_f39c05a8-9292-4eaa-804c-a6148887c797-modified.png"  />
-
-###
-
-<div align="left">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" height="30" alt="flutter logo"  />
-  <img width="12" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" height="30" alt="androidstudio logo"  />
-</div>
+# Simple Calculator <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" height="30" alt="flutter logo"  /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" height="30" alt="androidstudio logo"  /> <img align="right" height="150" src="https://asamasterson.com/github/flutter_calculator/_f39c05a8-9292-4eaa-804c-a6148887c797-modified.png"  />
 
 ###
 
 **Just a simple calculator, nothing more!**
 
-## Builds
 [![Codemagic build status](https://api.codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/status_badge.svg)](https://codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/latest_build)
 
 ## App Listing
