@@ -10,6 +10,7 @@
 ## App Listing
 [![Google Play Download](https://img.shields.io/badge/Google%20Play-darkgreen?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
 [![Web app](https://img.shields.io/badge/Web%20App-darkgreen?logo=googlechrome&logoColor=white)](https://simple_calculator.codemagic.app)
+[![Privacy Policy](https://img.shields.io/badge/Privacy%20Policy-purple)](https://policies.pigsare.pink/calculator/)
 
 <img src="https://asamasterson.com/github/flutter_calculator/Hotpot%200.png"
      alt="Play listing image (1)"
