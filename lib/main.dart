@@ -34,19 +34,29 @@ class _MyHomePageState extends State<MyHomePage> {
   double num2 = 0;
   String operand = "";
   String query = "";
+  String _query = "";
+  bool duplicate = false;
 
   buttonPressed(String buttonText) {
-    query = query + buttonText;
     if(buttonText == "CLEAR"){
       _output = "0";
       num1 = 0;
       num2 = 0;
       operand = "";
-      query = "";
     } else if(buttonText == "+" || buttonText == "-" || buttonText == "x" || buttonText == "/"){
-      num1 = double.parse(output);
-      operand = buttonText;
-      _output = "0";
+      if(_query.isNotEmpty){
+        if(_query[_query.length - 1] != buttonText) {
+          num1 = double.parse(output);
+          operand = buttonText;
+          _output = "0";
+        } else {
+          duplicate = true;
+        }
+      } else {
+        num1 = double.parse(output);
+        operand = buttonText;
+        _output = "0";
+      }
     } else if(buttonText == "."){
       if(_output.contains(".")){
         print("Already contains a decimal silly!");
@@ -73,9 +83,22 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       _output = _output + buttonText;
     }
-    print(_output);
     setState(() {
       output = double.parse(_output).toStringAsFixed(2);
+      if(duplicate) {
+        duplicate = false;
+      } else {
+        if (buttonText == "=") {
+          query = _query;
+          _query = output;
+        } else if (buttonText == "CLEAR") {
+          query = "";
+          _query = "";
+        } else {
+          query = _query + buttonText;
+          _query = query;
+        }
+      }
     });
   }
 
@@ -118,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  output,
+                  output, // Big bold text
                   style: const TextStyle(
                       fontSize: 48.0,
                       fontWeight: FontWeight.bold
@@ -127,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Container(
                   padding: const EdgeInsets.only(top: 4.0),
                   child: Text(
-                    query, // Add your additional text here
+                    query, // Small grey text
                     style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.grey,
