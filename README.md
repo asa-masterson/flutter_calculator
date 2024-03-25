@@ -17,7 +17,7 @@
 ## Builds
 [![Codemagic build status](https://api.codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/status_badge.svg)](https://codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/latest_build)
 
-## Play Listing
+## App Listing
 [![Google Play Download](https://img.shields.io/badge/Google%20Play-darkgreen?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
 [![Web app](https://img.shields.io/badge/Web%20App-darkgreen?logo=googlechrome&logoColor=white)](https://simple_calculator.codemagic.app)
 
