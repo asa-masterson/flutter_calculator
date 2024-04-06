@@ -98,6 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
           query = _query + buttonText;
           _query = query;
         }
+        if (output == "NaN") {
+          output = r"Error :\";
+          _query = "";
+          _output = "0";
+        }
       }
     });
   }
