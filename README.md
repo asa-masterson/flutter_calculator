@@ -5,9 +5,12 @@
 **Just a simple calculator, nothing more!**
 
 ## Builds
-[![Codemagic build status](https://api.codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/status_badge.svg)](https://codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/latest_build)
-![Cloudflare Pages build status](https://img.shields.io/endpoint?url=https://cloudflare-pages-badges.pigsarepink.workers.dev/?projectName=flutter-calculator)
+### Android
+[![Codemagic build status](https://api.codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/status_badge.svg)](https://codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/latest_build) ➡️
+[![Google Play Listing](https://img.shields.io/endpoint?color=brightgreen&logo=google-play&logoColor=white&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Dcom.pigsare.pink.calculator.calculator%26gl%3DGB%26hl%3Den%26l%3DGoogle%2520Play%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
 
+### Web
+[![Cloudflare Pages build status](https://img.shields.io/endpoint?url=https://cloudflare-pages-badges.pigsarepink.workers.dev/?projectName=flutter-calculator)](https://calculator.pigsare.pink)
 
 ## App Listing
 [![Google Play Download](https://img.shields.io/badge/Google%20Play-darkgreen?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
