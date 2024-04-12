@@ -1,6 +1,4 @@
 export function onRequest(context) {
-  console.log(context.params.catchall)
-  async fetch(request) {
     const data = [
       {
         "relation": ["delegate_permission/common.handle_all_urls"],
@@ -12,7 +10,5 @@ export function onRequest(context) {
         }
       }
     ];
-
-    return Response.json(data);
-  },
-};
+    return new Response.json(data);
+}
