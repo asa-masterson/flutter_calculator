@@ -1,4 +1,5 @@
-export default {
+export export function onRequest(context) {
+  console.log(context.params.catchall)
   async fetch(request) {
     const data = [
       {
