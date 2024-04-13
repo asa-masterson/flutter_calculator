@@ -10,5 +10,5 @@ export function onRequest(context) {
         }
       }
     ];
-    return new Response.json(data);
+    return Response.json(data);
 }
