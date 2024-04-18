@@ -1,16 +1,39 @@
-# calculator
+# Simple Calculator <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" height="30" alt="flutter logo"  /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg" height="30" alt="androidstudio logo"  /> <img align="right" height="150" src="https://asamasterson.com/github/flutter_calculator/_f39c05a8-9292-4eaa-804c-a6148887c797-modified.png"  />
 
-A calculator
+###
 
-## Getting Started
+**Just a simple calculator, nothing more!**
 
-This project is a starting point for a Flutter application.
+## Builds
+### Android
+[![Codemagic build status](https://api.codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/status_badge.svg)](https://codemagic.io/apps/65ff6c90bcb66a983f5fc041/65ff6c90bcb66a983f5fc040/latest_build) ➡️
+[![Google Play Listing](https://img.shields.io/endpoint?color=brightgreen&logo=google-play&logoColor=white&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Dcom.pigsare.pink.calculator.calculator%26gl%3DGB%26hl%3Den%26l%3DGoogle%2520Play%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
 
-A few resources to get you started if this is your first Flutter project:
+### Web
+[![Cloudflare Pages build status](https://img.shields.io/endpoint?url=https://cloudflare-pages-badges.pigsarepink.workers.dev/?projectName=flutter-calculator)](https://calculator.pigsare.pink)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## App Listing
+[![Google Play Download](https://img.shields.io/badge/Google%20Play-darkgreen?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.pigsare.pink.calculator.calculator)
+[![Web app](https://img.shields.io/badge/Web%20App-darkgreen?logo=googlechrome&logoColor=white)](https://calculator.pigsare.pink)
+[![Privacy Policy](https://img.shields.io/badge/Privacy%20Policy-purple)](https://policies.pigsare.pink/calculator/)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://asamasterson.com/github/flutter_calculator/Hotpot%200.png"
+alt="Play listing image (1)"
+width=15%
+style="float: left; margin-right: 10px;" />
+<img src="https://asamasterson.com/github/flutter_calculator/Hotpot%201.png"
+alt="Play listing image (2)"
+width=15%
+style="float: left; margin-right: 10px;" />
+<img src="https://asamasterson.com/github/flutter_calculator/Hotpot%202.png"
+alt="Play listing image (3)"
+width=15%
+style="float: left; margin-right: 10px;" />
+<img src="https://asamasterson.com/github/flutter_calculator/Hotpot%203.png"
+alt="Play listing image (4)"
+width=15%
+style="float: left; margin-right: 10px;" />
+<img src="https://asamasterson.com/github/flutter_calculator/Hotpot%204.png"
+alt="Play listing image (5)"
+width=15%
+style="float: left; margin-right: 10px;" />
