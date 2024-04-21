@@ -261,6 +261,16 @@ class _MyHomePageState extends State<MyHomePage> {
           LogicalKeySet(LogicalKeyboardKey.digit8): const ActivateIntent('8'),
           LogicalKeySet(LogicalKeyboardKey.digit9): const ActivateIntent('9'),
           LogicalKeySet(LogicalKeyboardKey.digit0): const ActivateIntent('0'),
+          LogicalKeySet(LogicalKeyboardKey.numpad1): const ActivateIntent('1'),
+          LogicalKeySet(LogicalKeyboardKey.numpad2): const ActivateIntent('2'),
+          LogicalKeySet(LogicalKeyboardKey.numpad3): const ActivateIntent('3'),
+          LogicalKeySet(LogicalKeyboardKey.numpad4): const ActivateIntent('4'),
+          LogicalKeySet(LogicalKeyboardKey.numpad5): const ActivateIntent('5'),
+          LogicalKeySet(LogicalKeyboardKey.numpad6): const ActivateIntent('6'),
+          LogicalKeySet(LogicalKeyboardKey.numpad7): const ActivateIntent('7'),
+          LogicalKeySet(LogicalKeyboardKey.numpad8): const ActivateIntent('8'),
+          LogicalKeySet(LogicalKeyboardKey.numpad9): const ActivateIntent('9'),
+          LogicalKeySet(LogicalKeyboardKey.numpad0): const ActivateIntent('0'),
         },
         child: Actions(
           actions: <Type, Action<Intent>>{
