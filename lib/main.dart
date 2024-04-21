@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+
+class ActivateIntent extends Intent {
+  const ActivateIntent(this.keyLabel);
+
+  final String keyLabel;
+}
 
 void main() => runApp(const MyApp());
 
+// Used for the android deeplink
 final _router = GoRouter(
   routes: [
     GoRoute(
@@ -17,6 +26,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Use a string literal for the title instead of the widget property
     return MaterialApp(
       title: 'Calculator',
       debugShowCheckedModeBanner: false,
@@ -69,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
     } else if(buttonText == "."){
       if(_output.contains(".")){
-        print("Already contains a decimal silly!");
+        // print("Already contains a decimal silly!");
       } else {
         _output = _output + buttonText;
       }
@@ -141,13 +151,19 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  // Move the _handleKeyPress method to the _MyHomePageState class
+  // Parse the key label to an integer before comparing it
+  void _handleKeyPress(String keyLabel) {
+    int? keyNumber = int.tryParse(keyLabel);
+    if (keyNumber != null && 0 <= keyNumber && keyNumber <= 9) {
+      buttonPressed(keyLabel);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-      title: Text(widget.title, style: const TextStyle(color: Colors.pink)),
-      ),
-      body: Column(
+    // Define the Column widget as a separate Widget variable
+    Widget body = Column(
         children: <Widget>[
           Container(
             alignment: Alignment.centerRight,
@@ -228,7 +244,40 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ]
-      )
+    );
+
+    // Wrap the body in a Shortcuts and Actions widgets if the app is running on the web
+// Wrap the body in a Shortcuts and Actions widgets if the app is running on the web
+    if (kIsWeb) {
+      body = Shortcuts(
+        shortcuts: <LogicalKeySet, Intent>{
+          LogicalKeySet(LogicalKeyboardKey.digit1): const ActivateIntent('1'),
+          LogicalKeySet(LogicalKeyboardKey.digit2): const ActivateIntent('2'),
+          LogicalKeySet(LogicalKeyboardKey.digit3): const ActivateIntent('3'),
+          LogicalKeySet(LogicalKeyboardKey.digit4): const ActivateIntent('4'),
+          LogicalKeySet(LogicalKeyboardKey.digit5): const ActivateIntent('5'),
+          LogicalKeySet(LogicalKeyboardKey.digit6): const ActivateIntent('6'),
+          LogicalKeySet(LogicalKeyboardKey.digit7): const ActivateIntent('7'),
+          LogicalKeySet(LogicalKeyboardKey.digit8): const ActivateIntent('8'),
+          LogicalKeySet(LogicalKeyboardKey.digit9): const ActivateIntent('9'),
+          LogicalKeySet(LogicalKeyboardKey.digit0): const ActivateIntent('0'),
+        },
+        child: Actions(
+          actions: <Type, Action<Intent>>{
+            ActivateIntent: CallbackAction<ActivateIntent>(
+              onInvoke: (ActivateIntent intent) => _handleKeyPress(intent.keyLabel),
+            ),
+          },
+          child: body,
+        ),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title, style: const TextStyle(color: Colors.pink)),
+      ),
+      body: body,
     );
   }
 }
