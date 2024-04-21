@@ -58,6 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool duplicate = false;
 
   buttonPressed(String buttonText) {
+    print('Button pressed: $buttonText');
+
     if(buttonText == "CLEAR"){
       _output = "0";
       num1 = 0;
@@ -275,7 +277,10 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Actions(
           actions: <Type, Action<Intent>>{
             ActivateIntent: CallbackAction<ActivateIntent>(
-              onInvoke: (ActivateIntent intent) => buttonPressed(intent.keyLabel),
+              onInvoke: (ActivateIntent intent) {
+                print('Key pressed: ${intent.keyLabel}');
+                _handleKeyPress(intent.keyLabel);
+              },
             ),
           },
           child: body,
