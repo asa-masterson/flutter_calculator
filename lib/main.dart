@@ -275,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Actions(
           actions: <Type, Action<Intent>>{
             ActivateIntent: CallbackAction<ActivateIntent>(
-              onInvoke: (ActivateIntent intent) => _handleKeyPress(intent.keyLabel),
+              onInvoke: (ActivateIntent intent) => buttonPressed(intent.keyLabel),
             ),
           },
           child: body,
