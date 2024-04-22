@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.pink,
       ),
       home: const MyHomePage(title: 'PigsAre.Calculating'),
+
     );
   }
 }
@@ -170,10 +171,24 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Focus(
         autofocus: true,
         onKey: (FocusNode node, RawKeyEvent event) {
+          final key = event.logicalKey;
+
           if(event is RawKeyDownEvent) {
             final keyLabel = event.data.keyLabel;
             if(int.tryParse(keyLabel) != null) {
               buttonPressed(keyLabel);
+            } else if (keyLabel == "+" || keyLabel == "-" || keyLabel == "x" || keyLabel == "/") {
+              buttonPressed(keyLabel);
+            } else if (keyLabel == "*") {
+            buttonPressed("x");
+            } else if (keyLabel == "=" || key == LogicalKeyboardKey.enter) {
+              buttonPressed("=");
+            } else if (keyLabel == ".") {
+              buttonPressed(".");
+            } else if (key == LogicalKeyboardKey.backspace || key == LogicalKeyboardKey.delete) {
+              buttonPressed("CLEAR");
+            } else if (key == LogicalKeyboardKey.escape) {
+              SystemNavigator.pop();
             }
           }
           return KeyEventResult.ignored; // Return ignored to propagate the event to other widgets
