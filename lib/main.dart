@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
-import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
-
-class ActivateIntent extends Intent {
-  const ActivateIntent(this.keyLabel);
-
-  final String keyLabel;
-}
+import 'package:flutter/services.dart'; // Import flutter/services.dart to use LogicalKeyboardKey
 
 void main() => runApp(const MyApp());
 
-// Used for the android deeplink
+// Used for deeplinking (android)
 final _router = GoRouter(
   routes: [
     GoRoute(
@@ -26,7 +19,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use a string literal for the title instead of the widget property
     return MaterialApp(
       title: 'Calculator',
       debugShowCheckedModeBanner: false,
@@ -47,6 +39,24 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class NumberKeyPressedAction extends Intent {
+  final String number;
+
+  const NumberKeyPressedAction(this.number);
+}
+
+class NumberKeyPressedActionHandler extends Action<NumberKeyPressedAction> {
+  final Function(String) buttonPressed;
+
+  NumberKeyPressedActionHandler(this.buttonPressed);
+
+  @override
+  Object? invoke(covariant NumberKeyPressedAction intent) {
+    buttonPressed(intent.number);
+    return null;
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   String output = "0";
   String _output = "0";
@@ -58,8 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
   bool duplicate = false;
 
   buttonPressed(String buttonText) {
-    print('Button pressed: $buttonText');
-
     if(buttonText == "CLEAR"){
       _output = "0";
       num1 = 0;
@@ -153,146 +161,106 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // Move the _handleKeyPress method to the _MyHomePageState class
-  // Parse the key label to an integer before comparing it
-  void _handleKeyPress(String keyLabel) {
-    int? keyNumber = int.tryParse(keyLabel);
-    if (keyNumber != null && 0 <= keyNumber && keyNumber <= 9) {
-      buttonPressed(keyLabel);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    // Define the Column widget as a separate Widget variable
-    Widget body = Column(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.centerRight,
-            padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  output, // Big bold text
-                  style: const TextStyle(
-                      fontSize: 48.0,
-                      fontWeight: FontWeight.bold
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: Text(
-                    query, // Small grey text
+    return Scaffold(
+      appBar: AppBar(
+      title: Text(widget.title, style: const TextStyle(color: Colors.pink)),
+      ),
+      body: Focus(
+        autofocus: true,
+        onKey: (FocusNode node, RawKeyEvent event) {
+          if(event is RawKeyDownEvent) {
+            final keyLabel = event.data.keyLabel;
+            if(int.tryParse(keyLabel) != null) {
+              buttonPressed(keyLabel);
+            }
+          }
+          return KeyEventResult.ignored; // Return ignored to propagate the event to other widgets
+        },
+        child: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.centerRight,
+              padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    output, // Big bold text
                     style: const TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.grey,
+                        fontSize: 48.0,
+                        fontWeight: FontWeight.bold
                     ),
                   ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 4.0),
+                    child: Text(
+                      query, // Small grey text
+                      style: const TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust the horizontal padding as needed
+                child: Divider(
+                  color: Colors.pink, // Set your desired color here
+                  height: 20, // Optional: sets the Divider's height
+                  thickness: 2, // Optional: sets the thickness of the line
+                ),
+              ),
+            ),
+            Column(
+              children: [
+                Row(
+                  children: [
+                    buildButton("7"),
+                    buildButton("8"),
+                    buildButton("9"),
+                    buildButton("/"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("4"),
+                    buildButton("5"),
+                    buildButton("6"),
+                    buildButton("x"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("1"),
+                    buildButton("2"),
+                    buildButton("3"),
+                    buildButton("-"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("."),
+                    buildButton("0"),
+                    buildButton("00"),
+                    buildButton("+"),
+                  ],
+                ),
+                Row(
+                  children: [
+                    buildButton("CLEAR"),
+                    buildButton("="),
+                  ],
                 ),
               ],
             ),
-          ),
-          const Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0), // Adjust the horizontal padding as needed
-              child: Divider(
-                color: Colors.pink, // Set your desired color here
-                height: 20, // Optional: sets the Divider's height
-                thickness: 2, // Optional: sets the thickness of the line
-              ),
-            ),
-          ),
-          Column(
-            children: [
-              Row(
-                children: [
-                  buildButton("7"),
-                  buildButton("8"),
-                  buildButton("9"),
-                  buildButton("/"),
-                ],
-              ),
-              Row(
-                children: [
-                  buildButton("4"),
-                  buildButton("5"),
-                  buildButton("6"),
-                  buildButton("x"),
-                ],
-              ),
-              Row(
-                children: [
-                  buildButton("1"),
-                  buildButton("2"),
-                  buildButton("3"),
-                  buildButton("-"),
-                ],
-              ),
-              Row(
-                children: [
-                  buildButton("."),
-                  buildButton("0"),
-                  buildButton("00"),
-                  buildButton("+"),
-                ],
-              ),
-              Row(
-                children: [
-                  buildButton("CLEAR"),
-                  buildButton("="),
-                ],
-              ),
-            ],
-          ),
-        ]
-    );
-
-    // Wrap the body in a Shortcuts and Actions widgets if the app is running on the web
-// Wrap the body in a Shortcuts and Actions widgets if the app is running on the web
-    if (kIsWeb) {
-      body = Shortcuts(
-        shortcuts: <LogicalKeySet, Intent>{
-          LogicalKeySet(LogicalKeyboardKey.digit1): const ActivateIntent('1'),
-          LogicalKeySet(LogicalKeyboardKey.digit2): const ActivateIntent('2'),
-          LogicalKeySet(LogicalKeyboardKey.digit3): const ActivateIntent('3'),
-          LogicalKeySet(LogicalKeyboardKey.digit4): const ActivateIntent('4'),
-          LogicalKeySet(LogicalKeyboardKey.digit5): const ActivateIntent('5'),
-          LogicalKeySet(LogicalKeyboardKey.digit6): const ActivateIntent('6'),
-          LogicalKeySet(LogicalKeyboardKey.digit7): const ActivateIntent('7'),
-          LogicalKeySet(LogicalKeyboardKey.digit8): const ActivateIntent('8'),
-          LogicalKeySet(LogicalKeyboardKey.digit9): const ActivateIntent('9'),
-          LogicalKeySet(LogicalKeyboardKey.digit0): const ActivateIntent('0'),
-          LogicalKeySet(LogicalKeyboardKey.numpad1): const ActivateIntent('1'),
-          LogicalKeySet(LogicalKeyboardKey.numpad2): const ActivateIntent('2'),
-          LogicalKeySet(LogicalKeyboardKey.numpad3): const ActivateIntent('3'),
-          LogicalKeySet(LogicalKeyboardKey.numpad4): const ActivateIntent('4'),
-          LogicalKeySet(LogicalKeyboardKey.numpad5): const ActivateIntent('5'),
-          LogicalKeySet(LogicalKeyboardKey.numpad6): const ActivateIntent('6'),
-          LogicalKeySet(LogicalKeyboardKey.numpad7): const ActivateIntent('7'),
-          LogicalKeySet(LogicalKeyboardKey.numpad8): const ActivateIntent('8'),
-          LogicalKeySet(LogicalKeyboardKey.numpad9): const ActivateIntent('9'),
-          LogicalKeySet(LogicalKeyboardKey.numpad0): const ActivateIntent('0'),
-        },
-        child: Actions(
-          actions: <Type, Action<Intent>>{
-            ActivateIntent: CallbackAction<ActivateIntent>(
-              onInvoke: (ActivateIntent intent) {
-                print('Key pressed: ${intent.keyLabel}');
-                _handleKeyPress(intent.keyLabel);
-              },
-            ),
-          },
-          child: body,
-        ),
-      );
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title, style: const TextStyle(color: Colors.pink)),
+          ]
+        )
       ),
-      body: body,
     );
   }
 }
